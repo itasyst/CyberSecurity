@@ -2,11 +2,14 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](Images/Azure Virtual Network.drawio)
+![Azure Virtual Network](https://github.com/itasyst/CyberSecurity/blob/main/README/Images/Azure%20Virtual%20Network.drawio)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+  - [Filebeat-Playbook] (https://github.com/itasyst/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
+  - [Install-Elk] (https://github.com/itasyst/CyberSecurity/blob/main/Ansible/install-elk.yml)
+  - [Metricbeat-Playbook] (https://github.com/itasyst/CyberSecurity/blob/main/Ansible/metricbeat-playbook.yml)
+  - [Pentest] (https://github.com/itasyst/CyberSecurity/blob/main/Ansible/pentest.yml)  
 
 This document contains the following details:
 - Description of the Topologu
@@ -21,10 +24,10 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
+Load balancing ensures that the application will be highly available, in addition to restricting traffic to the network.
 - _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the data and system logs.
 - _TODO: What does Filebeat watch for?_
 - _TODO: What does Metricbeat record?_
 
@@ -33,26 +36,30 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Jump Box | Gateway  | 10.0.0.4/20.85.230.55 | Linux |
+| Web-1    | Web Server |  10.0.0.5/40.117.60.30| Linux|
+| Web-2    | Web Server |  10.0.0.6/40.117.60.30|  Linux|
+| Elk      | Elk Server |  10.1.0.4/40.113.222.208|  Linux|
+| Load Balancer | Load Balancer | Static External IP (40.117.60.30)| Linux |
+| Workstation | Access Control | External IP | Linux |
+
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Elk Server machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- _Workstation Public IP through TCP port 5601
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by the Jump-Box-Provisioner. Which machine did you allow to access your ELK VM? What was its IP address?
+- _Jump-Box-Provisioner IP: 10.0.0.4 via SSH port 22
+- _Workstation Public IP via port TCP 5601
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
+| Jump Box | No                  |    |
 |          |                     |                      |
 |          |                     |                      |
 
