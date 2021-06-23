@@ -2,14 +2,14 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Azure Virtual Network](https://github.com/itasyst/CyberSecurity/blob/main/README/Images/Azure%20Virtual%20Network.drawio)
+![](Images/Azure_Virtual_Network.drawio)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - [Filebeat-Playbook] (https://github.com/itasyst/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
-  - [Install-Elk] (https://github.com/itasyst/CyberSecurity/blob/main/Ansible/install-elk.yml)
-  - [Metricbeat-Playbook] (https://github.com/itasyst/CyberSecurity/blob/main/Ansible/metricbeat-playbook.yml)
-  - [Pentest] (https://github.com/itasyst/CyberSecurity/blob/main/Ansible/pentest.yml)  
+  - [Filebeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
+  - [Install-Elk](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/install-elk.yml)
+  - [Metricbeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/metricbeat-playbook.yml)
+  - [Pentest](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/pentest.yml)  
 
 This document contains the following details:
 - Description of the Topologu
@@ -25,23 +25,33 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, in addition to restricting traffic to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+
+- What aspect of security do load balancers protect? 
+__Availability, Web Traffic, Web Security_
+  
+- What is the advantage of a jump box?
+__Automation, Security, Network Segmentation, Access Control_
+
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the data and system logs.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+
+- What does Filebeat watch for?
+__Filebeat helps generate and organize log files to send to Logstash and Elasticsearch. Specifically, it logs information about the file system, including which files have changed and when._
+
+- What does Metricbeat record?
+__Metricbeat records system-level CPU usage, memory, file system, disk IO, and network IO statistics, as well as top-like statistics for every process running on your systems. You can ship the data to the output that you specify, such as Elasticsearch, Logstash, or Kibana._
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.4/20.85.230.55 | Linux |
-| Web-1    | Web Server |  10.0.0.5/40.117.60.30| Linux|
-| Web-2    | Web Server |  10.0.0.6/40.117.60.30|  Linux|
-| Elk      | Elk Server |  10.1.0.4/40.113.222.208|  Linux|
-| Load Balancer | Load Balancer | Static External IP (40.117.60.30)| Linux |
-| Workstation | Access Control | External IP | Linux |
+| Name          | Function       | IP Address                        | Operating System |
+|---------------|----------------|-----------------------------------|------------------|
+| Jump Box      | Gateway        | 10.0.0.4/20.85.230.55             | Linux            |
+| Web-1         | Web Server     | 10.0.0.5/40.117.60.30             | Linux            |
+| Web-2         | Web Server     | 10.0.0.6/40.117.60.30             | Linux            |
+| Elk           | Elk Server     | 10.1.0.4/40.113.222.208           | Linux            |
+| Load Balancer | Load Balancer  | Static External IP (40.117.60.30) | Linux            |
+| Workstation   | Access Control | External IP/Public IP             | Linux            |
 
 
 ### Access Policies
@@ -49,19 +59,21 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Elk Server machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _Workstation Public IP through TCP port 5601
+- __Workstation Public IP through TCP port 5601
 
 Machines within the network can only be accessed by the Jump-Box-Provisioner. Which machine did you allow to access your ELK VM? What was its IP address?
-- _Jump-Box-Provisioner IP: 10.0.0.4 via SSH port 22
-- _Workstation Public IP via port TCP 5601
+- __Jump-Box-Provisioner IP: 10.0.0.4 via SSH port 22
+- __Workstation Public IP via port TCP 5601
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | No                  |    |
-|          |                     |                      |
-|          |                     |                      |
+| Name          | Publicly Accessible | Allowed IP Addresses                 |
+|---------------|---------------------|--------------------------------------|
+| Jump Box      | No                  | Workstation Public IP on SSH 22      |
+| Web-1         | No                  | 10.0.0.4 on SSH 22                   |
+| Web-2         | No                  | 10.0.0.4 on SSH 22                   |
+| Elk           | No                  | Workstation Public IP using TCP 5601 |
+| Load Balancer | No                  | Workstation Public IP on  HTTP 80    |
 
 ### Elk Configuration
 
