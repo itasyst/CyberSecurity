@@ -6,10 +6,10 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - [Filebeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
-  - [Install-Elk](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/install-elk.yml)
-  - [Metricbeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/metricbeat-playbook.yml)
-  - [Pentest](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/pentest.yml)  
+  -[Filebeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
+  -[Install-Elk](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/install-elk.yml)
+  -[Metricbeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/metricbeat-playbook.yml)
+  -[Pentest](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/pentest.yml)  
 
 This document contains the following details:
 - Description of the Topologu
@@ -59,11 +59,11 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Elk Server machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- __Workstation Public IP through TCP port 5601
+- Workstation Public IP through TCP port 5601
 
 Machines within the network can only be accessed by the Jump-Box-Provisioner. Which machine did you allow to access your ELK VM? What was its IP address?
-- __Jump-Box-Provisioner IP: 10.0.0.4 via SSH port 22
-- __Workstation Public IP via port TCP 5601
+- Jump-Box-Provisioner IP: 10.0.0.4 via SSH port 22
+- Workstation Public IP via port TCP 5601
 
 A summary of the access policies in place can be found in the table below.
 
@@ -166,7 +166,9 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 - Copy the `filebeat-config.yml` file to `/etc/filebeat/filebeat-playbook.yml`.
-- Update the hosts file to include the `[webservers]` and the `[elk]` groups
+- Update the `filebeat-config.yml` file to include the following:
+  -
+  
 - Run the playbook, and navigate to the Filebeat installation page on the ELK server GUI to check that the installation worked as expected.
   ..*Navigate back to the Filebeat installation page on the ELK server GUI.
   ..*On the same page, scroll to Step 5: Module Status and click Check Data.
@@ -178,3 +180,44 @@ __FAQs
 - _Which URL do you navigate to in order to check that the ELK server is running?
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
+__Commands to Start Up VMs and Containers
+
+```ssh [username]@[IP Address]
+Jump Box Internal IP: 10.0.0.4
+Jump Box ssh sysadmin@20.85.230.55
+Web - 1  ssh sysadmin@10.0.0.5
+Web - 2 ssh sysadmin@10.0.0.6
+Web - 3 ssh sysadmin@10.0.0.7
+Elk ssh sysadmin@10.1.0.4
+Load Balancer: 40.117.60.30
+
+70.133.250.95
+
+sudo docker container list -a
+
+sudo docker start zealous_diffie
+sudo docker attach zealous_diffie
+
+sudo docker start elk
+sudo docker attach elk
+
+sudo docker start dvwa
+sudo docker attach dvwa
+```
+__Commands to Edit and Run Playbooks
+
+Create or Edit Filebeat Playbook: `nano /etc/ansible/roles/filebeat-playbook.yml`
+
+Get Filebeat Config file: `curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml`
+
+Edit Filebeat Config file: `nano /etc/ansible/filebeat-config.yml`
+
+Get Metricbeat Config file: `curl https://gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat > /etc/ansible/metricbeat-config.yml`
+
+Edit Metricbeat Config file: `nano /etc/ansible/metricbeat-config.yml`
+
+Create or Edit Metricbeat Playbook: `nano /etc/ansible/roles/metricbeat-playbook.yml`
+
+Run Metricbeat Playbook: `ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml`
+
