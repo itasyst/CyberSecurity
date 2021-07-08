@@ -6,10 +6,10 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  -[Filebeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
-  -[Install-Elk](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/install-elk.yml)
-  -[Metricbeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/metricbeat-playbook.yml)
-  -[Pentest](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/pentest.yml)  
+  - [Filebeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
+  - [Install-Elk](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/install-elk.yml)
+  - [Metricbeat-Playbook](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/metricbeat-playbook.yml)
+  - [Pentest](https://github.com/itasyst/CyberSecurity/blob/main/Ansible/pentest.yml)  
 
 This document contains the following details:
 - Description of the Topologu
@@ -167,7 +167,7 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the `filebeat-config.yml` file to `/etc/filebeat/filebeat-playbook.yml`.
 - Update the `filebeat-config.yml` file to include the following:
-  -
+
   
 - Run the playbook, and navigate to the Filebeat installation page on the ELK server GUI to check that the installation worked as expected.
   ..*Navigate back to the Filebeat installation page on the ELK server GUI.
@@ -175,9 +175,12 @@ SSH into the control node and follow the steps below:
   ..*Scroll to the bottom of the page and click Verify Incoming Data.
 
 __FAQs__
-- _Which file is the playbook? Where do you copy it?__The filebeat playbook is located in /etc/ansible/files/filebeat-config.yml__
+- _Which file is the playbook? Where do you copy it?_
+  - __The filebeat playbook is located in /etc/ansible/files/filebeat-config.yml__
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?__http://[your.ELK-VM.External.IP]:5601/app/kibana__
+  
+- _Which URL do you navigate to in order to check that the ELK server is running?_
+  - __http://[your.ELK-VM.External.IP]:5601/app/kibana__
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
