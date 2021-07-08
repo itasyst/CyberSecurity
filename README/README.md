@@ -175,9 +175,9 @@ SSH into the control node and follow the steps below:
   ..*Scroll to the bottom of the page and click Verify Incoming Data.
 
 __FAQs__
-- _Which file is the playbook? Where do you copy it?__The filebeat playbook is located in /etc/ansible/files/filebeat-config.yml
+- _Which file is the playbook? Where do you copy it?__The filebeat playbook is located in /etc/ansible/files/filebeat-config.yml__
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- _Which URL do you navigate to in order to check that the ELK server is running?__http://[your.ELK-VM.External.IP]:5601/app/kibana__
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
@@ -192,9 +192,7 @@ Web - 3 ssh sysadmin@10.0.0.7
 Elk ssh sysadmin@10.1.0.4
 Load Balancer: 40.117.60.30
 
-70.133.250.95
-
-sudo docker container list -a
+sudo docker container list -a 
 
 sudo docker start zealous_diffie
 sudo docker attach zealous_diffie
