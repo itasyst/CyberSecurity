@@ -27,19 +27,19 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 Load balancing ensures that the application will be highly available, in addition to restricting traffic to the network.
 
 - What aspect of security do load balancers protect? 
-__Availability, Web Traffic, Web Security_
+__Availability, Web Traffic, Web Security__
   
 - What is the advantage of a jump box?
-__Automation, Security, Network Segmentation, Access Control_
+__Automation, Security, Network Segmentation, Access Control__
 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the data and system logs.
 
 - What does Filebeat watch for?
-__Filebeat helps generate and organize log files to send to Logstash and Elasticsearch. Specifically, it logs information about the file system, including which files have changed and when._
+__Filebeat helps generate and organize log files to send to Logstash and Elasticsearch. Specifically, it logs information about the file system, including which files have changed and when.__
 
 - What does Metricbeat record?
-__Metricbeat records system-level CPU usage, memory, file system, disk IO, and network IO statistics, as well as top-like statistics for every process running on your systems. You can ship the data to the output that you specify, such as Elasticsearch, Logstash, or Kibana._
+__Metricbeat records system-level CPU usage, memory, file system, disk IO, and network IO statistics, as well as top-like statistics for every process running on your systems. You can ship the data to the output that you specify, such as Elasticsearch, Logstash, or Kibana.__
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -174,14 +174,14 @@ SSH into the control node and follow the steps below:
   ..*On the same page, scroll to Step 5: Module Status and click Check Data.
   ..*Scroll to the bottom of the page and click Verify Incoming Data.
 
-__FAQs
+__FAQs__
 - _Which file is the playbook? Where do you copy it?__The filebeat playbook is located in /etc/ansible/files/filebeat-config.yml
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - _Which URL do you navigate to in order to check that the ELK server is running?
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
-__Commands to Start Up VMs and Containers
+__Commands to Start Up VMs and Containers__
 
 ```ssh [username]@[IP Address]
 Jump Box Internal IP: 10.0.0.4
@@ -205,7 +205,7 @@ sudo docker attach elk
 sudo docker start dvwa
 sudo docker attach dvwa
 ```
-__Commands to Edit and Run Playbooks
+__Commands to Edit and Run Playbooks__
 
 Create or Edit Filebeat Playbook: `nano /etc/ansible/roles/filebeat-playbook.yml`
 
